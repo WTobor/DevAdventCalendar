@@ -385,6 +385,7 @@ namespace DevAdventCalendarCompetition.Controllers
                 {
                     CorrectAnswerDate = (stat.CorrectAnswerDateTime == DateTime.MinValue) ? null : stat.CorrectAnswerDateTime,
                     WrongAnswerCount = stat.WrongAnswerCount,
+                    WrongAnswers = stat.WrongAnswers,
                     TestNumber = stat.TestNumber
                 });
             }

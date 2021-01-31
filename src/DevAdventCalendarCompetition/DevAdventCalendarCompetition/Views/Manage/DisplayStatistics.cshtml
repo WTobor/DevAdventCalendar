@@ -24,12 +24,12 @@
     <tbody>
         @foreach (var currentStat in Model)
         {
-            <tr>
-                <th scope="row" class="col-xs-1"></th>
-                <td style="text-align: center;">@currentStat.TestNumber</td>
-                <td style="text-align: center;">@currentStat.CorrectAnswerDate</td>
-                <td style="text-align: center;">@currentStat.WrongAnswerCount</td>
-            </tr>
+        <tr>
+            <th scope="row" class="col-xs-1"></th>
+            <td style="text-align: center;">@currentStat.TestNumber</td>
+            <td style="text-align: center;">@currentStat.CorrectAnswerDate</td>
+            <td style="text-align: center;">@foreach (var WrongAnswer in currentStat.WrongAnswers)@WrongAnswer
+        </tr>
         }
     </tbody>
 </table>

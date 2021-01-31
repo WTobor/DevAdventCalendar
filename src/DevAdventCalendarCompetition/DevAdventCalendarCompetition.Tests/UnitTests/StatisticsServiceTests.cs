@@ -38,6 +38,12 @@ namespace DevAdventCalendarCompetition.Tests.UnitTests
         public void GetStatisticsDtoList()
         {
             // ARRANGE
+            List<string> wrAns = new List<string>()
+            {
+                "ans1",
+                "ans2",
+                "ans3"
+            };
             string userId = "c611530e-bebd-41a9-ace2-951550edbfa0";
 
             this._statisticsRepositoryMock.Setup(a => a.GetAnsweredCorrectMaxTestId(userId)).Returns(4);
@@ -49,6 +55,7 @@ namespace DevAdventCalendarCompetition.Tests.UnitTests
                 this._statisticsRepositoryMock.Setup(a => a.GetUserTestCorrectAnswerDate(userId, i + 2)).Returns(DateTime.MinValue.AddDays(i));
                 this._statisticsRepositoryMock.Setup(a => a.GetUserTestWrongAnswerCount(userId, i + 2)).Returns(i);
                 this._statisticsRepositoryMock.Setup(a => a.GetTestIdFromTestNumber(i)).Returns(i + 2);
+                this._statisticsRepositoryMock.Setup(a => a.GetUserTestWrongAnswerString(userId, i + 2)).Returns(wrAns);
             }
 
             // ACT

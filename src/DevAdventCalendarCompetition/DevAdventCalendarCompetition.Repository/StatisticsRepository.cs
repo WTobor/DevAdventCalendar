@@ -75,5 +75,16 @@ namespace DevAdventCalendarCompetition.Repository
                 .SingleOrDefault()
                 : 0;
         }
+
+        public List<string> GetUserTestWrongAnswerString(string userId, int testId)
+        {
+            return this._dbContext.Tests.Any()
+                ? this._dbContext
+                .UserTestWrongAnswers
+                .Where(a => a.TestId == testId && a.UserId == userId)
+                .Select(a => a.Answer)
+                .ToList()
+                : null;
+        }
     }
 }

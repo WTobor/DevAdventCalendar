@@ -27,10 +27,17 @@ namespace DevAdventCalendarCompetition.Services
             {
                 currentTestId = this._statisticsRepository.GetTestIdFromTestNumber(i);
 
+                List<string> wrAns = this._statisticsRepository.GetUserTestWrongAnswerString(userId, currentTestId);
+                for (int j = 0; j < wrAns.Count - 1; j++)
+                {
+                    wrAns[j] += ", ";
+                }
+
                 allCurrentStats.Add(new StatisticsDto()
                 {
                     CorrectAnswerDateTime = this._statisticsRepository.GetUserTestCorrectAnswerDate(userId, currentTestId),
                     WrongAnswerCount = this._statisticsRepository.GetUserTestWrongAnswerCount(userId, currentTestId),
+                    WrongAnswers = wrAns,
                     TestNumber = i
                 });
             }
